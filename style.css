@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+}     
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+.Header{
+    text-align: center;
+}
+
+.Content{
+    display: flex;
+    flex-direction: row;
+}

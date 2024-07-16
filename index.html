@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>graphColoring</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="Header">
+        <h1>Tô đỉnh đồ thị</h1>
+        <div>
+            <span>Import file Excel</span>
+        </div>
+        <input type="file" id="upload" accept=".xlsx">
+    </div>
+    
+    <div class="Content">
+        <div><div id="matrix-container"></div></div>
+        <div><div id="mynetwork"></div></div>
+        <div></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+    <script src="graphColoring.js"></script>
+</body>
+</html>
