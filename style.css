@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}     
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+.Header{
+    text-align: center;
+}
+
+.Content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.matrix{
+    display: flex;
+    width: 30%;
+    padding: 10px;
+    flex-direction: column;
+}
+.Verter{
+    width: 70%;
+    height: 75vh;
+    padding: 10px;
+}
+
+#mynetwork{
+    height: 100%;
+}
+
+table{
+    tr{
+        td{
+            padding: 5px;
+        }
+    }
+}
