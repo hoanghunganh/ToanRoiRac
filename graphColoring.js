@@ -16,7 +16,7 @@ function handleFile(event) {
         displayMatrix(matrix);
         drawGraph(matrix); // Gọi hàm drawGraph và truyền ma trận vừa tạo để vẽ đồ thị.
     };
-    
+    console.log(file)
     reader.readAsArrayBuffer(file); // Bắt đầu đọc tệp dưới dạng một ArrayBuffer. Khi quá trình đọc hoàn tất, hàm onload sẽ được gọi với kết quả đọc được.
 }
 
