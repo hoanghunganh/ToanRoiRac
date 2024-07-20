@@ -1,5 +1,5 @@
 //Khi người dùng nhập file excel thì gọi hàm đọc dữ liệu file excel
-document.getElementById('upload').addEventListener('change', handleFile, false); 
+document.getElementById('upload').addEventListener('change', handleFile, false); color
 
 function handleFile(event) {
     const file = event.target.files[0]; // Lấy tệp đầu tiên từ danh sách tệp mà người dùng đã tải lên.
@@ -16,7 +16,6 @@ function handleFile(event) {
         displayMatrix(matrix);
         drawGraph(matrix); // Gọi hàm drawGraph và truyền ma trận vừa tạo để vẽ đồ thị.
     };
-    console.log(file)
     reader.readAsArrayBuffer(file); // Bắt đầu đọc tệp dưới dạng một ArrayBuffer. Khi quá trình đọc hoàn tất, hàm onload sẽ được gọi với kết quả đọc được.
 }
 
