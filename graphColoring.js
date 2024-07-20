@@ -1,5 +1,5 @@
 //Khi người dùng nhập file excel thì gọi hàm đọc dữ liệu file excel
-document.getElementById('upload').addEventListener('change', handleFile, false); 
+document.getElementById('upload').addEventListener('change', handleFile, false);
 
 function handleFile(event) {
     const file = event.target.files[0]; // Lấy tệp đầu tiên từ danh sách tệp mà người dùng đã tải lên.
@@ -24,6 +24,9 @@ function handleFile(event) {
             container.appendChild(span);
         }
     };
+
+    reader.readAsArrayBuffer(file); // Bắt đầu đọc tệp dưới dạng một ArrayBuffer. Khi quá trình đọc hoàn tất, hàm onload sẽ được gọi với kết quả đọc được.
+
     if(file != undefined){
         reader.readAsArrayBuffer(file); // Bắt đầu đọc tệp dưới dạng một ArrayBuffer. Khi quá trình đọc hoàn tất, hàm onload sẽ được gọi với kết quả đọc được.
     }
@@ -56,9 +59,8 @@ function isAdjacencyMatrix(matrix) {
     }
 
     return true;
+
 }
-
-
 function displayMatrix(matrix) {
     const container = document.getElementById('matrix-container');
     container.innerHTML = ''; // Xóa nội dung cũ
