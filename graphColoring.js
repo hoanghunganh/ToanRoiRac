@@ -1,5 +1,5 @@
 //Khi người dùng nhập file excel thì gọi hàm đọc dữ liệu file excel
-document.getElementById('upload').addEventListener('change', handleFile, false); color
+document.getElementById('upload').addEventListener('change', handleFile, false);
 
 function handleFile(event) {
     const file = event.target.files[0]; // Lấy tệp đầu tiên từ danh sách tệp mà người dùng đã tải lên.
