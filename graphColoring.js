@@ -4,6 +4,7 @@ document.getElementById('upload').addEventListener('change', handleFile, false);
 function handleFile(event) {
     const file = event.target.files[0]; // Lấy tệp đầu tiên từ danh sách tệp mà người dùng đã tải lên.
     const reader = new FileReader(); //Tạo một đối tượng FileReader để đọc nội dung của tệp.
+    console.log(file)
     
     reader.onload = function(e) {
         const data = new Uint8Array(e.target.result); //Tạo một mảng Uint8Array
@@ -13,12 +14,53 @@ function handleFile(event) {
         const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 }); //Chuyển đổi sheet thành định dạng JSON
         
         const matrix = jsonData.map(row => row.map(Number)); //Chuyển đổi từng giá trị trong JSON thành số bằng cách sử dụng hàm map
-        displayMatrix(matrix);
-        drawGraph(matrix); // Gọi hàm drawGraph và truyền ma trận vừa tạo để vẽ đồ thị.
+        if(isAdjacencyMatrix(matrix)){
+            displayMatrix(matrix);
+            drawGraph(matrix); // Gọi hàm drawGraph và truyền ma trận vừa tạo để vẽ đồ thị.
+        } else {
+            const container = document.getElementById('matrix-container');
+            const span = document.createElement('span');
+            span.textContent = 'Ma trận được nhập vào không phải là ma trận kề. Vui lòng nhập lại'
+            container.appendChild(span);
+        }
     };
+
     reader.readAsArrayBuffer(file); // Bắt đầu đọc tệp dưới dạng một ArrayBuffer. Khi quá trình đọc hoàn tất, hàm onload sẽ được gọi với kết quả đọc được.
+
+    if(file != undefined){
+        reader.readAsArrayBuffer(file); // Bắt đầu đọc tệp dưới dạng một ArrayBuffer. Khi quá trình đọc hoàn tất, hàm onload sẽ được gọi với kết quả đọc được.
+    }
 }
 
+function isAdjacencyMatrix(matrix) {
+    const n = matrix.length;
+
+    // Kiểm tra ma trận vuông
+    for (let i = 0; i < n; i++) {
+        if (matrix[i].length !== n) {
+            return false;
+        }
+    }
+
+    // Kiểm tra các phần tử trên đường chéo chính
+    for (let i = 0; i < n; i++) {
+        if (matrix[i][i] !== 0) {
+            return false;
+        }
+    }
+
+    // Kiểm tra tính đối xứng
+    for (let i = 0; i < n; i++) {
+        for (let j = i + 1; j < n; j++) {
+            if (matrix[i][j] !== matrix[j][i]) {
+                return false;
+            }
+        }
+    }
+
+    return true;
+
+}
 function displayMatrix(matrix) {
     const container = document.getElementById('matrix-container');
     container.innerHTML = ''; // Xóa nội dung cũ
